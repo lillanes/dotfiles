@@ -1,0 +1,9 @@
+[ui]
+username = Leon Illanes <lillanes@cs.toronto.edu>
+ignore = ~/.hgignore
+
+[extensions]
+mq =
+rebase =
+purge =
+hgk =

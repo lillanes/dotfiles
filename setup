@@ -1,0 +1,110 @@
+#!/bin/sh
+
+help() {
+    echo "Usage:"
+    echo "  $0 [--remove] foo [bar...]   - setup/remove dotfiles from specified subdirectories"
+    echo "  $0 [--remove] --all          - setup/remove dotfiles from all subdirectories"
+    echo "  $0 --help                    - display this help message"
+}
+
+link() {
+    SOURCE=$1
+    DESTINATION=$2
+    TARGETS=`ls -A "$SOURCE"`
+    for TARGET in $TARGETS; do
+        if [ -f "$SOURCE/$TARGET" ]; then
+            # if source is file, link it
+            echo "ln -s $SOURCE/$TARGET $DESTINATION/$TARGET"
+            ln -s "$SOURCE/$TARGET" "$DESTINATION/$TARGET"
+            ERROR="$?"
+        else
+            if [ -d "$SOURCE/$TARGET" ]; then
+                # if target is directory, try to link it
+                if [ -d "$DESTINATION/$TARGET" ]; then
+                    # if directory already exists in home, go inside and
+                    # link everything in it
+                    link "$SOURCE/$TARGET" "$DESTINATION/$TARGET"
+                else
+                    # otherwise, just link it
+                    echo "ln -s $SOURCE/$TARGET $DESTINATION/$TARGET"
+                    ln -s "$SOURCE/$TARGET" "$DESTINATION/$TARGET"
+                    ERROR="$?"
+                fi
+            fi
+        fi
+    done
+}
+
+remove() {
+    SOURCE=$1
+    DESTINATION=$2
+    TARGETS=`ls -A "$SOURCE"`
+    for TARGET in $TARGETS; do
+        if [ -h "$DESTINATION/$TARGET" ]; then
+            # if this is a symlink, remove it
+            echo "rm $DESTINATION/$TARGET"
+            rm "$DESTINATION/$TARGET"
+            ERROR="$?"
+        else
+            if [ -d "$DESTINATION/$TARGET" ]; then
+                # if it's a directory, go in and remove everything
+                remove "$SOURCE/$TARGET" "$DESTINATION/$TARGET"
+            else
+                if [ -f "$DESTINATION/$TARGET" ]; then
+                    # if it's a regular file do nothing (but complain!)
+                    echo "$DESTINATION/$TARGET is a regular file!"
+                    ERROR=1
+                fi
+            fi
+        fi
+    done
+}
+
+if [ "$#" -eq "0" ]; then
+    help
+    exit 1
+fi
+
+UNITS=""
+REMOVE="false"
+ALL="false"
+while [ "$#" -ge "1" ]; do
+    case "$1" in
+        "--all")
+            ALL="true";;
+        "--help")
+            help; exit 0;;
+        "--remove")
+            REMOVE="true";;
+        *)
+            UNITS="$UNITS $1";;
+    esac
+    shift
+done
+
+if [ "$ALL" = "true" ]; then
+    LIST=`ls $PWD`
+    UNITS=""
+    for UNIT in $LIST; do
+        if [ -d $UNIT ]; then
+            UNITS="$UNITS $UNIT"
+        fi
+    done
+fi
+
+ERROR=0
+
+for UNIT in $UNITS; do
+    if [ $REMOVE = "false" ]; then
+        link "$PWD/$UNIT" "$HOME"
+    else
+        remove "$PWD/$UNIT" "$HOME"
+    fi
+done
+
+if [ "$ERROR" -ne "0" ]; then
+    echo "Some errors occurred!"
+    exit $ERROR
+fi
+
+exit 0

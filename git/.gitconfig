@@ -1,0 +1,10 @@
+[user]
+	name = León Illanes
+	email = lillanes@cs.toronto.edu
+[alias]
+	co = checkout
+	st = status
+[core]
+	editor = emacs-wait
+[push]
+	default = simple
