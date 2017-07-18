@@ -1,3 +1,6 @@
+# rust
+PATH="$HOME/.cargo/bin:$PATH"
+
 # pyenv
 PATH="$HOME/.pyenv/bin:$PATH"
 

@@ -31,17 +31,17 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     html
-     csv
-     markdown
-     rust
      auto-completion
      (c-c++ :variables
             c-c++-default-mode-for-headers 'c++-mode)
+     csv
      emacs-lisp
      helm
+     html
+     markdown
      org
      python
+     rust
      ;; semantic
      (shell :variables
             shell-default-height 30
