@@ -1,5 +1,6 @@
 ;; ESC escapes from _everything_
-(setq-default evil-escape-key-sequence "<ESC>")
+(global-set-key (kbd "<ESC>") 'evil-escape)
+
 ;; Persistent undo:
 (defvar undo-directory (concat spacemacs-cache-directory "undo"))
 (unless (file-accessible-directory-p undo-directory)
