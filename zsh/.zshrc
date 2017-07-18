@@ -87,3 +87,4 @@ alias tmux='tmux -2 attach'
 # emacs: open files in existing emacs session if possible
 export ALTERNATE_EDITOR=""
 alias :e='emacs-gui-or-tty'
+alias :en='emacsclient --create-frame --no-wait'
