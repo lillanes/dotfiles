@@ -1,5 +1,11 @@
 ;; ESC escapes from _everything_
-(global-set-key (kbd "<ESC>") 'evil-escape)
+(global-set-key (kbd "\e") 'evil-escape)
+
+;; g-<motion> should move based on visual lines:
+(define-key evil-normal-state-map (kbd "g <up>") 'evil-previous-visual-line)
+(define-key evil-normal-state-map (kbd "g <down>") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "g k") 'evil-previous-visual-line)
+(define-key evil-normal-state-map (kbd "g j") 'evil-next-visual-line)
 
 ;; Persistent undo:
 (defvar undo-directory (concat spacemacs-cache-directory "undo"))
