@@ -146,7 +146,7 @@ def FindNearest(path, target, filename, subdirectory="build"):
                      % (os.path.basename(filename), target, alt_candidate))
         return alt_candidate
     else:
-        parent = os.path.dirname(os.path.abspath(path))
+        parent = os.path.dirname(os.path.realpath(path))
         if(parent == path):
             raise RuntimeError("could not find %s" % target)
         return FindNearest(parent, target, filename, subdirectory)
@@ -215,9 +215,10 @@ def SearchForTranslationUnitWhichIncludesPath(database_path, database, path, fil
     with open(database_path, 'r') as f:
         jsonDb = json.load(f)
     basename = os.path.splitext(os.path.basename(filename))[0]
-    path = RemoveClosingSlash(os.path.abspath(path))
+    path = RemoveClosingSlash(os.path.realpath(path))
     found = []
     for translationUnit in jsonDb:
+        logging.debug("... testing translation unit %s" % translationUnit["file"])
         buildDir = translationUnit["directory"]
         switches = translationUnit["command"].split()
         for currentSwitch, nextSwitch in Pairwise(switches):
@@ -232,11 +233,14 @@ def SearchForTranslationUnitWhichIncludesPath(database_path, database, path, fil
                 isIncFlag = True
             if not isIncFlag:
                 continue
-            includeDir = RemoveClosingSlash(os.path.abspath(os.path.join(buildDir, includeDir)))
+            includeDir = RemoveClosingSlash(os.path.realpath(os.path.join(buildDir, includeDir)))
+            logging.debug("... searching in include path %s" % includeDir)
             # Check all the parent dirs in path
             pathCopy = path
             distance = 0
-            while pathCopy != os.path.abspath(os.sep):
+            while pathCopy != os.path.realpath(os.sep):
+                logging.debug("... comparing include path %s with possible target %s"
+                              % (includeDir, pathCopy))
                 if includeDir == pathCopy:
                     found_name = os.path.splitext(
                         os.path.basename(str(translationUnit["file"])))[0]
@@ -246,6 +250,8 @@ def SearchForTranslationUnitWhichIncludesPath(database_path, database, path, fil
                         found.append((-1, str(translationUnit["file"])))
                     else:
                         found.append((distance, str(translationUnit["file"])))
+                else:
+                    logging.debug("... not the same")
                 distance += 1
                 pathCopy, tail = os.path.split(pathCopy)
     found.sort()
