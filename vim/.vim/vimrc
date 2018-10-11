@@ -84,3 +84,18 @@ endif
 
 """ Allow moving beyond end of lines in visual block
 set virtualedit=block
+
+""" Shortcuts for closing, quitting, saving
+noremap <leader>d :bd<CR>
+noremap <leader>qq :q<CR>
+noremap <leader>x :x<CR>
+noremap <leader>w :w<CR>
+
+""" Shortcuts for toggles
+noremap <leader>tl :set wrap!<CR>
+noremap <leader>tn :set number!<CR>
+noremap <leader>tr :set relativenumber!<CR>
+noremap <leader>tw :set list!<CR>
+
+""" TODO Shortcuts for code
+" comment out/in line or block
