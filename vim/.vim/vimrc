@@ -1,0 +1,86 @@
+""" Use UTF-8 encoding
+set encoding=utf-8
+
+""" Use spacebar as leader
+let mapleader = "\<space>"
+
+""" Backups and swap
+set swapfile
+set directory=~/.vim/swap//,.
+set backup
+set writebackup
+set backupdir=~/.vim/swap//,.
+set undofile
+set undodir=~/.vim/undo//,.
+
+""" Command history
+set history=1000
+
+""" Don't redraw when running macros
+set lazyredraw
+
+""" Faster timeouts
+set timeout timeoutlen=1000 ttimeoutlen=100
+
+""" Backspace through startpoint, eol, etc.
+set backspace=indent,eol,start
+
+""" Search and replace
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set gdefault
+noremap <silent> <Leader>/ :noh<CR>
+
+""" Tabs
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+
+""" Visual autocomplete commands
+set wildmenu
+
+""" Colors
+set background=dark
+colorscheme gruvbox
+set cursorline
+
+""" Display status bar with line and column numbers
+set laststatus=2
+set ruler
+
+""" Display relative line numbers
+set number
+set relativenumber
+
+""" Syntax highlighting and indentation
+syntax on
+filetype plugin indent on
+
+""" Draw on trailing whitespace
+set list listchars=tab:\ \ ,trail:·
+
+""" Do not wrap long line
+set nowrap
+
+""" Scroll before reaching end of screen
+set scrolloff=4
+
+""" Splits open below and to the right
+set splitbelow
+set splitright
+
+""" Allow me to move away from modified buffers
+set hidden
+
+""" Display current command as it gets typed
+set showcmd
+
+""" Enable mouse if possible
+if has('mouse')
+    set mouse=a
+endif
+
+""" Allow moving beyond end of lines in visual block
+set virtualedit=block
