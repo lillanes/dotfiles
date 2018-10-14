@@ -69,6 +69,7 @@ alias ls='ls --color=auto'
 # Vimlike:
 alias :q=exit
 alias :qa=exit
+alias :e='vim'
 
 # multi move (eg: mv source_*.tgz target_*.tgz)
 autoload -U zmv
@@ -81,10 +82,5 @@ alias mmv='noglob zmv -W'
 alias ll='ls -l'
 alias la='ls -la'
 
-# tmux
-alias tmux='tmux -2 attach'
-
 # emacs: open files in existing emacs session if possible
 export ALTERNATE_EDITOR=""
-alias :e='emacs-gui-or-tty'
-alias :en='emacsclient --create-frame --no-wait'
