@@ -13,6 +13,12 @@ set backupdir=~/.vim/swap//,.
 set undofile
 set undodir=~/.vim/undo//,.
 
+""" Stop netrw from keeping history
+let g:netrw_dirhistmax = 0
+
+""" Use paths relative to current file
+set autochdir
+
 """ Command history
 set history=1000
 
@@ -54,6 +60,9 @@ set ruler
 set number
 set relativenumber
 
+""" Show folds on left side column
+set foldcolumn=1
+
 """ Syntax highlighting and indentation
 syntax on
 filetype plugin indent on
@@ -87,9 +96,15 @@ set virtualedit=block
 
 """ Shortcuts for closing, quitting, saving
 noremap <leader>d :bd<CR>
-noremap <leader>qq :q<CR>
+noremap <leader>q :q<CR>
 noremap <leader>x :x<CR>
 noremap <leader>w :w<CR>
+
+""" Shortcuts for moving between buffers
+noremap <leader>n :bn<CR>
+noremap <leader>N :bp<CR>
+noremap <leader>p :bp<CR>
+noremap <leader>b :b#<CR>
 
 """ Shortcuts for toggles
 noremap <leader>tl :set wrap!<CR>
@@ -97,5 +112,9 @@ noremap <leader>tn :set number!<CR>
 noremap <leader>tr :set relativenumber!<CR>
 noremap <leader>tw :set list!<CR>
 
-""" TODO Shortcuts for code
-" comment out/in line or block
+""" Shortcuts for editing related stuff
+nmap <leader>c gcc
+vmap <leader>c gc
+noremap <leader>+ <c-a>
+noremap <leader>- <c-x>
+
