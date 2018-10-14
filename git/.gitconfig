@@ -5,6 +5,6 @@
 	co = checkout
 	st = status
 [core]
-	editor = emacs-wait
+	editor = vim
 [push]
 	default = simple
