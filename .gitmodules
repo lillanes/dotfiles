@@ -4,3 +4,10 @@
 [submodule "vim/.vim/pack/plugins/start/commentary"]
 	path = vim/.vim/pack/plugins/start/commentary
 	url = https://tpope.io/vim/commentary.git
+[submodule "vim/.vim/pack/plugins/start/YouCompleteMe"]
+	path = vim/.vim/pack/plugins/start/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+        ignore = untracked
+[submodule "vim/.vim/pack/plugins/start/YCM-Generator"]
+	path = vim/.vim/pack/plugins/start/YCM-Generator
+	url = https://github.com/rdnetto/YCM-Generator.git

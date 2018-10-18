@@ -129,3 +129,11 @@ vmap <leader>c gc
 noremap <leader>+ <c-a>
 noremap <leader>- <c-x>
 
+""" YouCompleteMe setup
+let g:ycm_always_populate_location_list=1
+noremap <leader>E :YcmDiags<CR>
+noremap <leader>ed :YcmShowDetailedDiagnostic<CR>
+noremap <silent> <leader>en :try<bar>lnext<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\):/<bar>lfirst<bar>catch /^Vim\%((\a\+)\)\=:E\%(42\):/<bar>echo "No errors"<bar>endtry<cr>
+noremap <silent> <leader>eN :try<bar>lprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\):/<bar>llast<bar>catch /^Vim\%((\a\+)\)\=:E\%(42\):/<bar>echo "No errors"<bar>endtry<cr>
+noremap <silent> <leader>ep :try<bar>lprevious<bar>catch /^Vim\%((\a\+)\)\=:E\%(553\):/<bar>llast<bar>catch /^Vim\%((\a\+)\)\=:E\%(42\):/<bar>echo "No errors"<bar>endtry<cr>
+map gd :YcmCompleter GoTo<CR>
