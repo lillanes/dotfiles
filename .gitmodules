@@ -11,3 +11,6 @@
 [submodule "vim/.vim/pack/plugins/start/YCM-Generator"]
 	path = vim/.vim/pack/plugins/start/YCM-Generator
 	url = https://github.com/rdnetto/YCM-Generator.git
+[submodule "vim/.vim/pack/plugins/start/vim-altr"]
+	path = vim/.vim/pack/plugins/start/vim-altr
+	url = https://github.com/kana/vim-altr.git
