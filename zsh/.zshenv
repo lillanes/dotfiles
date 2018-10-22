@@ -11,10 +11,6 @@ LD_LIBRARY_PATH="$HOME/.local/lib:$LD_LIBRARY_PATH"
 # paths for local-installed python libs
 PYTHONPATH="$HOME/.local/lib/python"
 
-# export and run stuff that needs to be run
-eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
-
 if [[ -a "$HOME/.zshenv.local" ]]; then
     source "$HOME/.zshenv.local"
 fi
