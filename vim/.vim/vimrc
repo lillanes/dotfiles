@@ -24,6 +24,12 @@ if !isdirectory($HOME . "/.vim/undo")
 endif
 set undodir=~/.vim/undo//,.
 
+""" Jump to last cursor position after opening a file
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
 """ Stop netrw from keeping history
 let g:netrw_dirhistmax = 0
 
@@ -62,6 +68,7 @@ set wildmenu
 set background=dark
 colorscheme gruvbox
 set cursorline
+set colorcolumn=81
 
 """ Display status bar with line and column numbers
 set laststatus=2
@@ -71,14 +78,20 @@ set ruler
 set number
 set relativenumber
 
-""" Show folds on left side column
+""" Show folds on left side column, start with all folds open
 set foldcolumn=1
+set foldmethod=syntax
+autocmd BufWinEnter * silent! :%foldopen!
 
 """ Syntax highlighting and indentation
 syntax on
 filetype plugin indent on
+""" Small changes to C and C++ indentation
+" (Do not indent switch cases, do not indent C++ scope declarations,
+" do not indent C++ namespaces)
+set cinoptions=:0,l1,g0,N-s
 
-""" Draw on trailing whitespace
+""" Draw on trailing pace
 set list listchars=tab:\ \ ,trail:·
 
 """ Do not wrap long line
@@ -109,13 +122,13 @@ set virtualedit=block
 noremap <leader>d :bd<CR>
 noremap <leader>q :q<CR>
 noremap <leader>x :x<CR>
-noremap <leader>w :w<CR>
 
-""" Shortcuts for moving between buffers
+""" Shortcuts for moving between buffers and splits
 noremap <leader>n :bn<CR>
 noremap <leader>N :bp<CR>
 noremap <leader>p :bp<CR>
 noremap <leader>b :b#<CR>
+noremap <leader>w <C-w>
 
 """ Shortcuts for toggles
 noremap <leader>tl :set wrap!<CR>
@@ -128,6 +141,7 @@ nmap <leader>c gcc
 vmap <leader>c gc
 noremap <leader>+ <c-a>
 noremap <leader>- <c-x>
+noremap <silent> <leader>W :%s/\s\+$//e<CR>
 
 """ YouCompleteMe setup
 let g:ycm_always_populate_location_list=1
