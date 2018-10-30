@@ -130,6 +130,9 @@ noremap <leader>p :bp<CR>
 noremap <leader>b :b#<CR>
 noremap <leader>w <C-w>
 
+""" Open terminal in vertical split
+noremap <leader>T :vertical terminal<CR>
+
 """ Shortcuts for toggles
 noremap <leader>tl :set wrap!<CR>
 noremap <leader>tn :set number!<CR>
