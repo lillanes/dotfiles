@@ -66,21 +66,32 @@ bindkey '\e[B' history-search-forward
 # Color
 alias ls='ls --color=auto'
 
+# Open files in existing vim session
+function vimr {
+    if (( $# == 0 )) {
+        vim --servername VIM
+    } elif (( $# == 1 )) {
+        vim --servername VIM --remote $@
+    } else  {
+        SERVER=$1
+        shift 1
+        vim --servername $SERVER --remote $@
+    }
+}
+
 # Vimlike:
 alias :q=exit
 alias :qa=exit
-alias :e='vim'
+alias :e=vim
+alias :er=vimr
 
 # multi move (eg: mv source_*.tgz target_*.tgz)
 autoload -U zmv
 alias mmv='noglob zmv -W'
 
-# use = as calculator 
+# use = as calculator
 = () { python2 -c "import sys; print eval('$@')" }
 
 # aliases for ls
 alias ll='ls -l'
 alias la='ls -la'
-
-# emacs: open files in existing emacs session if possible
-export ALTERNATE_EDITOR=""
