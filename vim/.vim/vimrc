@@ -70,6 +70,11 @@ colorscheme gruvbox
 set cursorline
 set colorcolumn=81
 
+""" Cursor shapes for terminal
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
 """ Display status bar with line and column numbers
 set laststatus=2
 set ruler
@@ -109,6 +114,9 @@ set hidden
 
 """ Display current command as it gets typed
 set showcmd
+
+""" Disable "Type qa! and press <Enter> to exit" message
+noremap <C-c> <silent> <C-c>
 
 """ Enable mouse if possible
 if has('mouse')
