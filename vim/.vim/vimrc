@@ -129,6 +129,7 @@ noremap <leader>N :bp<CR>
 noremap <leader>p :bp<CR>
 noremap <leader>b :b#<CR>
 noremap <leader>w <C-w>
+noremap <leader>o <C-w>o<CR>
 
 """ Open terminal in vertical split
 noremap <leader>T :vertical terminal<CR>
