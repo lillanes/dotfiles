@@ -13,6 +13,9 @@ function fish_right_prompt
         case visual
             set_color --bold brmagenta
             echo '[VISUAL]'
+        case paste
+            set_color --bold red
+            echo '[PASTE]'
         case '*'
             set_color --bold red
             echo '[?]'
