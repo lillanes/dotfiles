@@ -12,7 +12,7 @@ function fish_prompt --description 'Write out the prompt'
     end
     printf "%s@%s " $USER (prompt_hostname)
     set_color $fish_color_cwd
-    printf "%s \f\r" (prompt_pwd)
+    printf "%s \n" (prompt_pwd)
     if test $stat -gt 0
         set_color -o red
         printf " (%s) %% " $stat
