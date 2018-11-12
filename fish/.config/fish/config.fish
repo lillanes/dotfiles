@@ -15,13 +15,12 @@ set -g fish_prompt_pwd_dir_length 0
 
 function fish_user_key_bindings
     fish_vi_key_bindings
-    # C-c clears command line instead of breaking and starting a new one, this
-    # works well with multiline prompts (default behavior does not):
-    bind --mode insert \cc 'commandline ""'
+    # C-c that works with multiple lines in current command and prompt
+    bind --mode insert \cC cancel_commandline
     # In other modes, C-c changes mode:
-    bind --mode default --sets-mode insert \cc force-repaint
-    bind --mode replace_one --sets-mode default \cc force-repaint
-    bind --mode visual --sets-mode default \cc end-selection force-repaint
+    bind --mode default --sets-mode insert \cC force-repaint
+    bind --mode replace_one --sets-mode default \cC force-repaint
+    bind --mode visual --sets-mode default \cC end-selection force-repaint
 
     # Workaround for usable delete key in st:
     bind --mode insert \e\[P delete-char
