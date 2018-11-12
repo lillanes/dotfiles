@@ -54,7 +54,7 @@ set hlsearch
 set ignorecase
 set smartcase
 set gdefault
-noremap <silent> <Leader>/ :noh<CR>
+noremap <silent> <esc><esc> :noh<CR>
 
 """ Tabs
 set expandtab
@@ -149,10 +149,13 @@ noremap <leader>tr :set relativenumber!<CR>
 noremap <leader>tw :set list!<CR>
 
 """ Shortcuts for editing related stuff
+" comment out line/block/movement
 nmap <leader>c gcc
 vmap <leader>c gc
+" increment/decrement number under cursor
 noremap <leader>+ <c-a>
 noremap <leader>- <c-x>
+" remove trailing whitespace:
 noremap <silent> <leader>W :%s/\s\+$//e<CR>
 
 """ YouCompleteMe setup
