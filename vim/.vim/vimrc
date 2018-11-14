@@ -149,9 +149,10 @@ noremap <leader>tr :set relativenumber!<CR>
 noremap <leader>tw :set list!<CR>
 
 """ Shortcuts for editing related stuff
-" comment out line/block/movement
-nmap <leader>c gcc
-vmap <leader>c gc
+" toggle comment line/block/movement/count
+nmap <leader>c <Plug>CommentaryLine
+vmap <leader>c <Plug>Commentary
+nmap <leader>C <Plug>Commentary<Plug>Commentary
 " increment/decrement number under cursor
 noremap <leader>+ <c-a>
 noremap <leader>- <c-x>
