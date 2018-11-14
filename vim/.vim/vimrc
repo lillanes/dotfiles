@@ -42,9 +42,6 @@ set history=1000
 """ Don't redraw when running macros
 set lazyredraw
 
-""" Faster timeouts
-set timeout timeoutlen=1000 ttimeoutlen=100
-
 """ Backspace through startpoint, eol, etc.
 set backspace=indent,eol,start
 
@@ -54,7 +51,10 @@ set hlsearch
 set ignorecase
 set smartcase
 set gdefault
-noremap <silent> <esc><esc> :noh<CR>
+" toggle search highlights
+nnoremap <silent> <leader>/ :set hlsearch!<CR>
+" clear search highlights
+nnoremap <silent> <leader><leader> :noh<CR>
 
 """ Tabs
 set expandtab
