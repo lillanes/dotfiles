@@ -22,3 +22,6 @@
 	path = vim/.vim/pack/plugins/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
         ignore = untracked
+[submodule "vim/.vim/pack/plugins/start/vim-buftabline"]
+	path = vim/.vim/pack/plugins/start/vim-buftabline
+	url = https://github.com/ap/vim-buftabline.git
