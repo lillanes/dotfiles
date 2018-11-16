@@ -56,10 +56,10 @@ nnoremap <silent> <leader><leader> :noh<CR>
 " recover search highlights
 nnoremap <silent> <leader>/ :set hlsearch<CR>
 
-""" Tabs
+""" Default indentation rules
 set expandtab
 set shiftwidth=4
-set softtabstop=4
+set smarttab
 
 """ Visual autocomplete commands
 set wildmenu

@@ -25,3 +25,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-buftabline"]
 	path = vim/.vim/pack/plugins/start/vim-buftabline
 	url = https://github.com/ap/vim-buftabline.git
+[submodule "vim/.vim/pack/plugins/start/vim-sleuth"]
+	path = vim/.vim/pack/plugins/start/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth.git
