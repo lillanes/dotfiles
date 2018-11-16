@@ -51,10 +51,10 @@ set hlsearch
 set ignorecase
 set smartcase
 set gdefault
-" toggle search highlights
-nnoremap <silent> <leader>/ :set hlsearch!<CR>
 " clear search highlights
 nnoremap <silent> <leader><leader> :noh<CR>
+" recover search highlights
+nnoremap <silent> <leader>/ :set hlsearch<CR>
 
 """ Tabs
 set expandtab
@@ -68,6 +68,9 @@ set wildmenu
 set background=dark
 colorscheme gruvbox
 set cursorline
+
+""" Set standard text width, and highlight first out-of-bounds column
+set textwidth=80
 set colorcolumn=81
 
 """ Cursor shapes for terminal
