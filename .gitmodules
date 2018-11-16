@@ -3,8 +3,8 @@
 	url = https://github.com/morhetz/gruvbox.git
         ignore = untracked
 [submodule "vim/.vim/pack/plugins/start/commentary"]
-	path = vim/.vim/pack/plugins/start/commentary
-	url = https://tpope.io/vim/commentary.git
+	path = vim/.vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
         ignore = untracked
 [submodule "vim/.vim/pack/plugins/start/YouCompleteMe"]
 	path = vim/.vim/pack/plugins/start/YouCompleteMe
