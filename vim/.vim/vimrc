@@ -149,8 +149,9 @@ noremap <leader>b :b#<CR>
 noremap <leader>w <C-w>
 noremap <leader>o <C-w>o<CR>
 
-""" Open terminal in vertical split
-noremap <leader>T :vertical terminal<CR>
+""" Open terminal
+noremap <leader>T :terminal<CR>
+noremap <leader>vT :vertical terminal<CR>
 
 """ Shortcuts for toggles
 noremap <leader>tl :set wrap!<CR>
