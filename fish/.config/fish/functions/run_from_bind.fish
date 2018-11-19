@@ -7,4 +7,3 @@ function run_from_bind -d "Adds line breaks to ensure output of whatever is bein
     end
     commandline -f repaint
 end
-

@@ -9,4 +9,3 @@ function abduco_start_attach_or_warn -d "Attaches to a given session or starts i
     end
     abduco -A $SESSION
 end
-
