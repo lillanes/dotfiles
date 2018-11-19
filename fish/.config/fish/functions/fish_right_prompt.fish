@@ -3,22 +3,22 @@ function fish_right_prompt
     switch $fish_bind_mode
         case default
             set_color --bold yellow
-            echo '[NORMAL]'
+            printf '[NORMAL]'
         case insert
             set_color --bold blue
-            echo '[INSERT]'
+            printf '[INSERT]'
         case replace_one
             set_color --bold cyan
-            echo '[REPLACE]'
+            printf '[REPLACE]'
         case visual
-            set_color --bold brmagenta
-            echo '[VISUAL]'
+            set_color --bold magenta
+            printf '[VISUAL]'
         case paste
             set_color --bold red
-            echo '[PASTE]'
+            printf '[PASTE]'
         case '*'
-            set_color --bold red
-            echo '[?]'
+            set_color --bold brred
+            printf '[?]'
     end
     set_color normal
 end
