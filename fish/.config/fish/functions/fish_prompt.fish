@@ -1,23 +1,35 @@
 function fish_prompt --description 'Write out the prompt'
-    #Save the return status of the previous command
-    set stat $status
+    set previous_exit_code $status
 
     switch "$USER"
         case root toor
-            set_color -o red
-            set prompt "#"
+            set user_color (set_color --bold red)
+            set fish_prompt_symbol "#"
         case '*'
-            set_color -o blue
-            set prompt "%"
+            set user_color (set_color --bold blue)
+            set fish_prompt_symbol "%%"
     end
-    printf "%s@%s " $USER (prompt_hostname)
-    set_color $fish_color_cwd
-    printf "%s \n" (prompt_pwd)
-    if test $stat -gt 0
-        set_color -o red
-        printf " (%s) %% " $stat
+
+    if test $previous_exit_code -gt 0
+        set prompt_color (set_color --bold red)
+        set error_message " ($previous_exit_code)"
     else
-        set_color normal
-        printf " %s " $prompt
+        set prompt_color (set_color normal)
+        set error_message ""
     end
+
+    set hostname (prompt_hostname)
+    set cwd (prompt_pwd)
+
+    set cwd_color (set_color $fish_color_cwd)
+
+    set length (string length "$USER@$hostname $cwd")
+    if test $length -gt $COLUMNS
+        set -l remove (math $length - $COLUMNS + 1 + 3)
+        set -l wd (string sub --start $remove $cwd)
+        set cwd "...$wd"
+    end
+
+    printf "$user_color$USER@$hostname $cwd_color$cwd\n"
+    printf "$prompt_color$error_message $fish_prompt_symbol "
 end
