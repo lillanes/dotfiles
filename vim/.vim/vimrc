@@ -87,9 +87,9 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
 
-""" Display status bar with line and column numbers
+""" Display status bar with filetype, line and column numbers
 set laststatus=2
-set ruler
+set statusline=%<%f\ %h%m%r%=%y\ %-14.(%l,%c%V%)\ %P
 
 """ Display relative line numbers
 set number
