@@ -1,5 +1,4 @@
-# Vi mode indicator
-function fish_right_prompt
+function fish_right_prompt --description 'Display Vi-mode on right side'
     switch $fish_bind_mode
         case default
             set_color --bold yellow
