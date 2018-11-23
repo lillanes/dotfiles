@@ -28,3 +28,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-sleuth"]
 	path = vim/.vim/pack/plugins/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
+[submodule "zsh/.zsh/zsh-syntax-highlighting"]
+	path = zsh/.zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
