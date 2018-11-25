@@ -1,3 +1,5 @@
+compinit -d $ZCACHEDIR/zcompdump
+
 # Fuzzier matching for completions
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 

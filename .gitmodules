@@ -29,8 +29,8 @@
 	path = vim/.vim/pack/plugins/start/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
 [submodule "zsh/.zsh/zsh-syntax-highlighting"]
-	path = zsh/.zsh/zsh-syntax-highlighting
+	path = zsh/.config/zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "zsh/.zsh/zsh-autosuggestions"]
-	path = zsh/.zsh/zsh-autosuggestions
+	path = zsh/.config/zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git

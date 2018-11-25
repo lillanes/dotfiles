@@ -12,7 +12,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 
 # Standard history file
-HISTFILE=~/.zsh_history
+HISTFILE=$ZCACHEDIR/histfile
 
 # C-R/C-F for history search
 bindkey '^r' history-incremental-search-backward
