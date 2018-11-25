@@ -1,3 +1,6 @@
+autoload compinit
+
+# Completions compiled db goes in cache location
 compinit -d $ZCACHEDIR/zcompdump
 
 # Fuzzier matching for completions
