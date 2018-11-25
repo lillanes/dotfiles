@@ -1,11 +1,16 @@
+""" Config files in XDG paths
+" Note: vimrc is also in $XDG_CONFIG_HOME/vim, but vim only knows that through
+" the $VIMINIT env variable
+set runtimepath+=$XDG_CONFIG_HOME/vim
+set packpath+=$XDG_CONFIG_HOME/vim
+
 """ Use UTF-8 encoding
 set encoding=utf-8
 
 """ Use spacebar as leader
 let mapleader = "\<space>"
 
-""" Backups and swap
-" go in XDG cache path
+""" Backups and swap go in XDG cache path
 set swapfile
 if !isdirectory($XDG_CACHE_HOME . "/vim/swap")
     silent call mkdir($XDG_CACHE_HOME . "/vim/swap", 'p')
