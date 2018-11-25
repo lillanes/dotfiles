@@ -1,0 +1,2 @@
+# avoid .zcompdump file where I don't want it
+skip_global_compinit=1
