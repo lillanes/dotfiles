@@ -1,8 +1,0 @@
-[ui]
-username = Leon Illanes <lillanes@cs.toronto.edu>
-
-[extensions]
-mq =
-rebase =
-purge =
-hgk =
