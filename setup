@@ -1,110 +1,51 @@
 #!/bin/sh
 
 help() {
-    echo "Usage:"
-    echo "  $0 [--remove] foo [bar...]   - setup/remove dotfiles from specified subdirectories"
-    echo "  $0 [--remove] --all          - setup/remove dotfiles from all subdirectories"
-    echo "  $0 --help                    - display this help message"
+    echo "Usage:":
+    echo "  $0 [--noconfirm] foo [bar...]   - setup symlinked dotfiles from specified subdirectories"
+    echo "  $0 [--noconfirm] --all          - setup symlinked dotfiles from all subdirectories"
+    echo "  $0 --help                       - display this help message"
 }
 
 link() {
-    SOURCE=$1
-    DESTINATION=$2
-    TARGETS=`ls -A "$SOURCE"`
-    for TARGET in $TARGETS; do
-        if [ -f "$SOURCE/$TARGET" ]; then
-            # if source is file, link it
-            echo "ln -s $SOURCE/$TARGET $DESTINATION/$TARGET"
-            ln -s "$SOURCE/$TARGET" "$DESTINATION/$TARGET"
-            ERROR="$?"
-        else
-            if [ -d "$SOURCE/$TARGET" ]; then
-                # if target is directory, try to link it
-                if [ -d "$DESTINATION/$TARGET" ]; then
-                    # if directory already exists in home, go inside and
-                    # link everything in it
-                    link "$SOURCE/$TARGET" "$DESTINATION/$TARGET"
-                else
-                    # otherwise, just link it
-                    echo "ln -s $SOURCE/$TARGET $DESTINATION/$TARGET"
-                    ln -s "$SOURCE/$TARGET" "$DESTINATION/$TARGET"
-                    ERROR="$?"
-                fi
-            fi
-        fi
-    done
+    find "$@" -path '.*' -prune -o \
+        \( -path '*/*' -prune \
+            -exec echo ln -ns "\"$PWD/{}\"" "\"$XDG_CONFIG_HOME/{}\"" ';' \
+            -ok ln -ns "$PWD/{}" "$XDG_CONFIG_HOME/{}" ';' \
+          -o \! -path '*/*' -type d \
+            -exec echo mkdir -pv "\"$XDG_CONFIG_HOME/{}\"" ';' \
+            -ok mkdir -pv "$XDG_CONFIG_HOME/{}" ';' \)
+    return $?
 }
 
-remove() {
-    SOURCE=$1
-    DESTINATION=$2
-    TARGETS=`ls -A "$SOURCE"`
-    for TARGET in $TARGETS; do
-        if [ -h "$DESTINATION/$TARGET" ]; then
-            # if this is a symlink, remove it
-            echo "rm $DESTINATION/$TARGET"
-            rm "$DESTINATION/$TARGET"
-            ERROR="$?"
-        else
-            if [ -d "$DESTINATION/$TARGET" ]; then
-                # if it's a directory, go in and remove everything
-                remove "$SOURCE/$TARGET" "$DESTINATION/$TARGET"
-            else
-                if [ -f "$DESTINATION/$TARGET" ]; then
-                    # if it's a regular file do nothing (but complain!)
-                    echo "$DESTINATION/$TARGET is a regular file!"
-                    ERROR=1
-                fi
-            fi
-        fi
-    done
+linknoconfirm() {
+    find "$@" -path '.*' -prune -o \
+        \( -path '*/*' -prune \
+            -exec echo ln -ns "\"$PWD/{}\"" "\"$XDG_CONFIG_HOME/{}\"" ';' \
+            -exec ln -ns "$PWD/{}" "$XDG_CONFIG_HOME/{}" ';' \
+          -o \! -path '*/*' -type d \
+            -exec echo mkdir -pv "\"$XDG_CONFIG_HOME/{}\"" ';' \
+            -exec mkdir -pv "$XDG_CONFIG_HOME/{}" ';' \)
+    return $?
 }
 
-if [ "$#" -eq "0" ]; then
-    help
-    exit 1
-fi
+XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-"$HOME/.config"}
 
-UNITS=""
-REMOVE="false"
-ALL="false"
-while [ "$#" -ge "1" ]; do
-    case "$1" in
-        "--all")
-            ALL="true";;
-        "--help")
-            help; exit 0;;
-        "--remove")
-            REMOVE="true";;
-        *)
-            UNITS="$UNITS $1";;
-    esac
+for arg in "$@"; do
     shift
+    [ "$arg" = "--noconfirm" ] && alias link=linknoconfirm && continue
+    set -- "$@" "$arg"
 done
 
-if [ "$ALL" = "true" ]; then
-    LIST=`ls $PWD`
-    UNITS=""
-    for UNIT in $LIST; do
-        if [ -d $UNIT ]; then
-            UNITS="$UNITS $UNIT"
-        fi
-    done
-fi
+case "$#" in
+    "0") help; exit 1;;
+    "1")
+        case "$1" in
+            "--help") help; exit 0;;
+            "--all") link *; exit $?;;
+        esac
+esac
 
-ERROR=0
-
-for UNIT in $UNITS; do
-    if [ $REMOVE = "false" ]; then
-        link "$PWD/$UNIT" "$HOME"
-    else
-        remove "$PWD/$UNIT" "$HOME"
-    fi
+for arg in "$@"; do
+    link "$arg"
 done
-
-if [ "$ERROR" -ne "0" ]; then
-    echo "Some errors occurred!"
-    exit $ERROR
-fi
-
-exit 0
