@@ -11,7 +11,9 @@ setopt HIST_REDUCE_BLANKS
 HISTSIZE=10000
 SAVEHIST=10000
 
-# Standard history file
+# History file is kept in XDG cache path
+XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+[ -d "$XDG_CACHE_HOME/zsh" ] || mkdir -p "$XDG_CACHE_HOME/zsh"
 HISTFILE=$XDG_CACHE_HOME/zsh/histfile
 
 # C-R/C-F for history search

@@ -1,6 +1,8 @@
 autoload compinit
 
 # Completions compiled db goes in cache location
+XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+[ -d "$XDG_CACHE_HOME/zsh" ] || mkdir -p "$XDG_CACHE_HOME/zsh"
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 
 # Fuzzier matching for completions

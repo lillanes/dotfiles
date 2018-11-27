@@ -83,6 +83,3 @@ Requires that the environment variable `ZDOTDIR` be set to
 `"$XDG_CONFIG_HOME/zsh"`. In addition, the `$XDG_CACHE_HOME/zsh` directory needs
 to exist.
 
-### To-do
-
-Zsh should create the cache directory if it doesn't exist.
