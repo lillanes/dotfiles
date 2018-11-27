@@ -1,7 +1,7 @@
 autoload compinit
 
 # Completions compiled db goes in cache location
-compinit -d $ZCACHEDIR/zcompdump
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 
 # Fuzzier matching for completions
 zstyle ':completion:*' completer _expand _complete _correct _approximate

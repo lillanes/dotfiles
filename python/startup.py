@@ -10,8 +10,8 @@ if oldhook:
         atexit.unregister(readline.write_history_file)
 
         cache_path = os.path.join(os.path.expandvars("$HOME"), ".cache/python")
-        if 'XDG_CACHE_PATH' in os.environ:
-            cache_path = os.path.join(os.path.expandvars("$XDG_CACHE_PATH"),
+        if 'XDG_CACHE_HOME' in os.environ:
+            cache_path = os.path.join(os.path.expandvars("$XDG_CACHE_HOME"),
                     "python")
 
         try:
