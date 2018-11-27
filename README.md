@@ -59,10 +59,6 @@ I use the following plugins (which are kept here as git submodules):
 Depends on the `VIMINIT` environment variable, which should to be set to
 `":source $XDG_CONFIG_HOME/vim/vimrc"`.
 
-### To-do
-
-Backups should probably go in `XDG_DATA_HOME` instead of the cache location.
-
 ## Zsh
 
 Vi-like bindings and shortcuts. Typical aliases. Useful completion. Command

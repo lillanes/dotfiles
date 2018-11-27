@@ -14,7 +14,7 @@ set encoding=utf-8
 """ Use spacebar as leader
 let mapleader = "\<space>"
 
-""" Backups and swap go in XDG cache path
+""" Swap, undo history and viminfo go in XDG cache path
 if empty($XDG_CACHE_HOME)
     let $XDG_CACHE_HOME = $HOME . "/.cache"
 endif
@@ -25,13 +25,6 @@ if !isdirectory($XDG_CACHE_HOME . "/vim/swap")
 endif
 set directory=$XDG_CACHE_HOME/vim/swap//,.
 
-set backup
-set writebackup
-if !isdirectory($XDG_CACHE_HOME . "/vim/backup")
-    silent call mkdir($XDG_CACHE_HOME . "/vim/backup", "p")
-endif
-set backupdir=$XDG_CACHE_HOME/vim/swap//,.
-
 set undofile
 if !isdirectory($XDG_CACHE_HOME . "/vim/undo")
     silent call mkdir($XDG_CACHE_HOME . "/vim/undo", "p")
@@ -39,6 +32,18 @@ endif
 set undodir=$XDG_CACHE_HOME/vim/undo//,.
 
 set viminfofile=$XDG_CACHE_HOME/vim/viminfofile
+
+""" Backups go in XDG user data path
+if empty($XDG_DATA_HOME)
+    let $XDG_DATA_HOME = $HOME . "/.local/share"
+endif
+
+set backup
+set writebackup
+if !isdirectory($XDG_DATA_HOME . "/vim/backup")
+    silent call mkdir($XDG_DATA_HOME . "/vim/backup", "p")
+endif
+set backupdir=$XDG_DATA_HOME/vim/backup//,.
 
 """ Jump to last cursor position after opening a file
 autocmd BufReadPost *
