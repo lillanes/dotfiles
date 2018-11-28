@@ -1,5 +1,5 @@
 # This key will be used both to attach/create and to detach
-ABDUCO_KEY="^A"
+local ABDUCO_KEY="^A"
 function abduco-attach-or-create {
     if [ -n "$ABDUCO_SESSION" ]; then
         echo "here"

@@ -1,3 +1,5 @@
+function () { # scope to keep local variables from bleeding out
+
 source $ZDOTDIR/vi.zsh
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/bindkeys.zsh
@@ -9,3 +11,5 @@ source $ZDOTDIR/prompt.zsh
 # External plugins
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+}
