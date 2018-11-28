@@ -1,5 +1,6 @@
 source $ZDOTDIR/vi.zsh
 source $ZDOTDIR/aliases.zsh
+source $ZDOTDIR/bindkeys.zsh
 source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/history.zsh
 source $ZDOTDIR/options.zsh
