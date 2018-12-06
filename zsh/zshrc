@@ -3,6 +3,7 @@ function () { # scope to keep local variables from bleeding out
 source $ZDOTDIR/vi.zsh
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/bindkeys.zsh
+source $ZDOTDIR/colors.zsh
 source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/history.zsh
 source $ZDOTDIR/options.zsh
