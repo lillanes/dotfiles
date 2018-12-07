@@ -5,10 +5,10 @@ function abduco-run {
         printf '\n'
         # write command to history
         print -s $BUFFER
-        # run it in abduco session (or attach to existing session)
+        # run it in abduco session
         SESSION_NUMBER=$(($(abduco | grep -o '[0-9]\+$' | sort -rh | head -n 1) + 1))
         SESSION_NAME="$USER-run-$SESSION_NUMBER"
-        abduco -Ae "$ABDUCO_KEY" "$SESSION_NAME" ${(z)BUFFER} < /dev/tty
+        abduco -ce "$ABDUCO_KEY" "$SESSION_NAME" ${(z)BUFFER} < /dev/tty
         # update history
         fc -R
         printf '\n'

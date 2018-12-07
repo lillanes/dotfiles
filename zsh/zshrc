@@ -13,4 +13,16 @@ source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+if [[ $- == *i* ]] && [ -z "$ABDUCO_SESSION" ]; then
+    # This is an interactive shell, and not already inside an abduco session
+
+    # if abduco is available, run session in it
+    if type abduco > /dev/null; then
+        SESSION_NUMBER=$(($(abduco | grep -o '[0-9]\+$' | sort -rh | head -n 1) + 1))
+        SESSION_NAME="$USER-$SESSION_NUMBER"
+        SHELL_COMMAND=`ps -p $$ -o command=`
+        exec abduco -c "$SESSION_NAME" "$SHELL_COMMAND"
+    fi
+fi
+
 }
