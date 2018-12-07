@@ -194,6 +194,7 @@ noremap <leader>- <c-x>
 noremap <silent> <leader>W :%s/\s\+$//e<CR>
 
 """ YouCompleteMe setup
+let g:ycm_server_python_interpreter='python2'
 let g:ycm_always_populate_location_list=1
 noremap <leader>E :YcmDiags<CR>
 noremap <leader>ed :YcmShowDetailedDiagnostic<CR>
