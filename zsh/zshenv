@@ -1,2 +1,9 @@
 # avoid .zcompdump file where I don't want it
 skip_global_compinit=1
+
+# force redraw on receiving sigwinch (by default it seems to be ignored if there
+# are no actual changes to the window). I need this to redraw when attaching to
+# an abduco session.
+TRAPWINCH() {
+    zle && { zle reset-prompt; zle -R }
+}

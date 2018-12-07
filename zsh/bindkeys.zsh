@@ -1,15 +1,20 @@
 # This key will be used both to attach/create and to detach
-local ABDUCO_KEY="^A"
-function abduco-attach-or-create {
-    if [ -n "$ABDUCO_SESSION" ]; then
-        echo "here"
-        return 1
+ABDUCO_KEY="^A"
+function abduco-run {
+    if [ -n "$BUFFER" ]; then
+        printf '\n'
+        # write command to history
+        print -s $BUFFER
+        # run it in abduco session (or attach to existing session)
+        SESSION_NUMBER=$(($(abduco | grep -o '[0-9]\+$' | sort -rh | head -n 1) + 1))
+        SESSION_NAME="$USER-run-$SESSION_NUMBER"
+        abduco -Ae "$ABDUCO_KEY" "$SESSION_NAME" ${(z)BUFFER} < /dev/tty
+        # update history
+        fc -R
+        printf '\n'
+        BUFFER=''
+        zle reset-prompt
     fi
-    ABDUCO_SESSION_NAME="${BUFFER:-default}"
-    printf '\n'
-    abduco -Ae "$ABDUCO_KEY" "$ABDUCO_SESSION_NAME" < /dev/tty
-    printf '\n'
-    zle reset-prompt
 }
-zle -N abduco-attach-or-create
-bindkey "$ABDUCO_KEY" abduco-attach-or-create
+zle -N abduco-run
+bindkey "$ABDUCO_KEY" abduco-run

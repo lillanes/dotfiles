@@ -6,6 +6,8 @@ setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 setopt HIST_REDUCE_BLANKS
+# Share history among multiple simultaneous sessions
+setopt SHAREHISTORY
 
 # Keep big history
 HISTSIZE=10000
