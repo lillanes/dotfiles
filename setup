@@ -1,9 +1,9 @@
 #!/bin/sh
 
 help() {
-    echo "Usage:"
-    echo "  $0 [--noconfirm] foo [bar...]   - setup symlinked dotfiles from specified subdirectories"
-    echo "  $0 [--noconfirm] --all          - setup symlinked dotfiles from all subdirectories"
+    echo "Usage:":
+    echo "  $0 [--noconfirm] foo [bar...]   - setup symlinked dotfiles for specified files and subdirectories"
+    echo "  $0 [--noconfirm] --all          - setup symlinked dotfiles for all files and subdirectories"
     echo "  $0 --help                       - display this help message"
 }
 
@@ -14,7 +14,10 @@ link() {
             -ok ln -ns "$PWD/{}" "$XDG_CONFIG_HOME/{}" ';' \
           -o \! -path '*/*' -type d \
             -exec echo mkdir -pv "\"$XDG_CONFIG_HOME/{}\"" ';' \
-            -ok mkdir -pv "$XDG_CONFIG_HOME/{}" ';' \)
+            -ok mkdir -pv "$XDG_CONFIG_HOME/{}" ';' \) -o \
+        \( \! -path '*/*' -type f \
+            -exec echo ln -ns "\"$PWD/{}\"" "\"$HOME/.{}\"" ';' \
+            -ok ln -ns "$PWD/{}" "$HOME/.{}" ';' \)
     return $?
 }
 
@@ -25,7 +28,10 @@ linknoconfirm() {
             -exec ln -ns "$PWD/{}" "$XDG_CONFIG_HOME/{}" ';' \
           -o \! -path '*/*' -type d \
             -exec echo mkdir -pv "\"$XDG_CONFIG_HOME/{}\"" ';' \
-            -exec mkdir -pv "$XDG_CONFIG_HOME/{}" ';' \)
+            -exec mkdir -pv "$XDG_CONFIG_HOME/{}" ';' \) -o \
+        \( \! -path '*/*' -type f \
+            -exec echo ln -ns "\"$PWD/{}\"" "\"$HOME/.{}\"" ';' \
+            -exec ln -ns "$PWD/{}" "$HOME/.{}" ';' \)
     return $?
 }
 
