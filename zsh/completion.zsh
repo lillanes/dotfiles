@@ -1,23 +1,29 @@
 autoload compinit
 
-# Completions compiled db goes in cache location
+# completions compiled db goes in cache location
 local XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
 [ -d "$XDG_CACHE_HOME/zsh" ] || mkdir -p "$XDG_CACHE_HOME/zsh"
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump
 
-# Fuzzier matching for completions
+# autocompletion does shell expansion, context-sensitive completion, correction,
+# and (finally) completions with corrections
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 
-# Match uppercase from lowercase
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# match lowercase to uppercase and fallback to fully case insensitive matching;
+# match multiple words separated by a dot, dash, or underscore;
+# match inside words
+zstyle ':completion:*' matcher-list\
+    'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}'\
+    'r:|[.-_]=**'\
+    'l:|=* r:|=*'
 
-# Display colors for completion menu
+# display colors for completion menu
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# Highlight selected item in menu
-zstyle ':completion:*' menu select=1
+# highlight selected item in menu
+zstyle ':completion:*' menu select
 
-# Give context to what's going on
+# give context to what's going on
 zstyle ':completion:*:descriptions' format '%BCompleting %d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format '%BNo matches for: %d'
