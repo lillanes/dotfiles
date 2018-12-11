@@ -5,8 +5,8 @@ if empty($XDG_CONFIG_HOME)
     let $XDG_CONFIG_HOME = $HOME . "/.config"
 endif
 
-set runtimepath+=$XDG_CONFIG_HOME/vim
-set packpath+=$XDG_CONFIG_HOME/vim
+let &runtimepath = $XDG_CONFIG_HOME . "/vim," . &runtimepath
+let &packpath = $XDG_CONFIG_HOME . "/vim," . &packpath
 
 """ Use UTF-8 encoding
 set encoding=utf-8
