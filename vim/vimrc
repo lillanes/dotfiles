@@ -210,3 +210,6 @@ map <leader>A <Plug>(altr-back)
 """ buftabline setup (show buffers in tabline)
 let g:buftabline_numbers=1
 let g:buftabline_indicators=1
+
+""" vimwiki setup
+let g:vimwiki_list = [{'path': '$XDG_DATA_HOME/vimwiki/'}]
