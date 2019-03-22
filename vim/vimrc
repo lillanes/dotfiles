@@ -129,8 +129,9 @@ filetype plugin indent on
 " do not indent C++ namespaces)
 set cinoptions=:0,l1,g0,N-s
 
-""" Draw on trailing pace
-set list listchars=tab:\ \ ,trail:·
+""" Draw on abnormal whitespace
+set list listchars=tab:»-,trail:·,nbsp:~,extends:→,precedes:←
+set showbreak=↳
 
 """ Do not wrap long line
 set nowrap
