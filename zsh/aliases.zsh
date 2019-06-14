@@ -11,3 +11,8 @@ alias la='ll -a'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
+
+## Extra aliases
+
+# cdr: cd to root of git project
+alias cdr='cd $(git rev-parse --show-toplevel)'
