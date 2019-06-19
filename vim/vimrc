@@ -124,10 +124,12 @@ autocmd BufWinEnter * silent! :%foldopen!
 """ Syntax highlighting and indentation
 syntax on
 filetype plugin indent on
-""" Small changes to C and C++ indentation
-" (Do not indent switch cases, do not indent C++ scope declarations,
-" do not indent C++ namespaces)
-set cinoptions=:0,l1,g0,N-s
+""" Small changes to default C and C++ indentation:
+" - do not indent switch cases
+" - do not indent C++ access modifiers
+" - do not indent C++ namespaces
+" - align after open parentheses
+set cinoptions=:0,l1,g0,N-s,(0
 
 """ Draw on abnormal whitespace
 set list listchars=tab:»-,trail:·,nbsp:~,extends:→,precedes:←
