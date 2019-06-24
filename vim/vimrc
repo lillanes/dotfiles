@@ -95,7 +95,9 @@ set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " Use colors for terminal too (hacky solution)
-let g:terminal_ansi_colors = g:vimshell_escape_colors
+if exists("g:vimshell_escape_colors")
+    let g:terminal_ansi_colors = g:vimshell_escape_colors
+endif
 " Highlight cursor line
 set cursorline
 
@@ -104,9 +106,15 @@ set textwidth=80
 set colorcolumn=81
 
 """ Cursor shapes for terminal
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+if exists('$TMUX')
+    let &t_SI = "\ePtmux;\<Esc>\<Esc>[6 q\<Esc>\\"
+    let &t_SR = "\ePtmux;\<Esc>\<Esc>[4 q\<Esc>\\"
+    let &t_EI = "\ePtmux;\<Esc>\<Esc>[2 q\<Esc>\\"
+else
+    let &t_SI = "\<Esc>[6 q"
+    let &t_SR = "\<Esc>[4 q"
+    let &t_EI = "\<Esc>[2 q"
+endif
 
 """ Display status bar with filetype, line and column numbers
 set laststatus=2

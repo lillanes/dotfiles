@@ -1,22 +1,8 @@
 function () { # scope to keep local variables from bleeding out
 
-if [[ $- == *i* ]] && [ -z "$ABDUCO_SESSION" ]; then
-    # This is an interactive shell, and not already inside an abduco session
-
-    # if abduco is available, run session in it
-    if type abduco > /dev/null; then
-        # sessions are given a number (1 + the largest active session number)
-        SESSION_NUMBER=$(($(abduco | grep -o '[0-9]\+$' | sort -rh | head -n 1) + 1))
-        SESSION_NAME="$USER-$SESSION_NUMBER"
-        # use the same command used to call this instance of the shell...
-        SHELL_COMMAND=`ps -p $$ -o command=`
-        if [ "a${SHELL_COMMAND:0:1}" = "a-" ]; then
-            # unless it's a login shell, in which case we strip the leading "-"
-            SHELL_COMMAND="${SHELL_COMMAND:1}"
-        fi
-        # replace process with abduco wrapped one
-        exec abduco -c "$SESSION_NAME" "$SHELL_COMMAND"
-    fi
+if [[ $- == *i* ]] && [ -z "$TMUX" ] && type tmux > /dev/null; then
+    # This is an interactive shell, and not already in tmux
+    exec tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"
 fi
 
 source $ZDOTDIR/vi.zsh
