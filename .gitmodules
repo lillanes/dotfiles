@@ -40,4 +40,4 @@
         ignore = dirty
 [submodule "vim/pack/plugins/start/vim-clangdestine"]
 	path = vim/pack/plugins/start/vim-clangdestine
-	url = git@gitlab.com:lillanes/vim-clangdestine.git
+	url = https://gitlab.com/lillanes/vim-clangdestine.git
