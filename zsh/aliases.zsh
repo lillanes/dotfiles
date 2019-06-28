@@ -16,3 +16,6 @@ alias rm='rm -i'
 
 # cdr: cd to root of git project
 alias cdr='cd $(git rev-parse --show-toplevel)'
+
+# tmux: use correct config
+alias tmux='tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf'
