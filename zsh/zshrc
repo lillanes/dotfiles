@@ -1,7 +1,9 @@
 function () { # scope to keep local variables from bleeding out
 
-if [[ $- == *i* ]] && [ -z "$TMUX" ] && type tmux > /dev/null; then
-    # This is an interactive shell, and not already in tmux
+if [[ $TERM != "linux" ]] && [[ $- == *i* ]] && [ -z "$TMUX" ] && type tmux > /dev/null; then
+    # This is not the linux virtual console, this is an interactive shell, this
+    # is not already in tmux, and tmux is available:
+    #   run tmux
     exec tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"
 fi
 

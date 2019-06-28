@@ -87,19 +87,23 @@ set wildmenu
 
 """ Colors
 set background=dark
-" enable italics before setting gruvbox (as per gruvbox's instructions)
-let g:gruvbox_italic=1
-colorscheme gruvbox
-" Use true color (24bit)
-set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-" Use colors for terminal too (hacky solution)
-if exists("g:vimshell_escape_colors")
-    let g:terminal_ansi_colors = g:vimshell_escape_colors
+if &t_Co > 255
+    " enable italics before setting gruvbox (as per gruvbox's instructions)
+    let g:gruvbox_italic=1
+    colorscheme gruvbox
+    " Use true color (24bit)
+    set termguicolors
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    " Use colors for terminal too (hacky solution)
+    if exists("g:vimshell_escape_colors")
+        let g:terminal_ansi_colors = g:vimshell_escape_colors
+    endif
+    " Highlight cursor line
+    set cursorline
+else
+    colorscheme pablo
 endif
-" Highlight cursor line
-set cursorline
 
 """ Set standard text width, and highlight first out-of-bounds column
 set textwidth=80
