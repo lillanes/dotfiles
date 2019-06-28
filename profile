@@ -31,10 +31,6 @@ export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/etc/terminfo:/lib/terminfo:/usr/s
 # vim: config files (caches and backups are handled by vim itself)
 export VIMINIT=":source $XDG_CONFIG_HOME/vim/vimrc"
 
-# zsh: config files (not perfect, .zshrc and others still needs the dot in
-# front) (history files are handled by zsh itself)
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-
 
 ### source local profile if it exists ###
 [ -f "$XDG_CONFIG_HOME/profile" ] && source "$XDG_CONFIG_HOME/profile"
