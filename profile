@@ -22,11 +22,11 @@ mkdir -p "$GNUPGHOME"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/histfile"
 mkdir -p "$XDG_CACHE_HOME/less"
 
-# python: startup script to manage history file
-export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
-
 # ncurses/terminfo: compiled terminfo files
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/etc/terminfo:/lib/terminfo:/usr/share/terminfo"
+
+# python: startup script to manage history file
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 
 # vim: config files (caches and backups are handled by vim itself)
 export VIMINIT=":source $XDG_CONFIG_HOME/vim/vimrc"
