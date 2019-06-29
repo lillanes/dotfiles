@@ -32,8 +32,8 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/startup.py"
 export VIMINIT=":source $XDG_CONFIG_HOME/vim/vimrc"
 
 # xorg-auth: put lock file in tmp
-mkdir -p /tmp/$USER/X
-export XAUTHORITY="/tmp/$USER/X/Xauthority"
+mkdir -p /tmp/$USER/X11
+export XAUTHORITY="/tmp/$USER/X11/Xauthority"
 
 
 ### source local profile if it exists ###
