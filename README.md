@@ -22,7 +22,7 @@ cache location.
 ### Configuration
 
 Depends on the `PYTHONSTARTUP` environment variable, which needs to be set to
-`"$XDG_CONFIG_HOME/python/startup.py"`.
+`"$XDG_CONFIG_HOME/python/startup.py"`. This is currently set in `profile`.
 
 ## Vim
 
@@ -36,6 +36,7 @@ I use the following plugins (which are kept here as git submodules):
 - [altr]: modern version of [a.vim], for alternating between related files
   (e.g., headers)
 - [buftabline]: buffer list for vim's tabline
+- [clangdestine]: define C and C++ indentation options based on clang-format
 - [commentary]: minimal tool for commenting out lines or blocks of code
 - [sleuth]: guesses the current file's indentation settings (tabs vs. spaces,
   etc.)
@@ -47,6 +48,7 @@ I use the following plugins (which are kept here as git submodules):
 [gruvbox]: https://github.com/morhetz/gruvbox
 [altr]: https://github.com/kana/vim-altr
 [buftabline]: https://github.com/ap/vim-buftabline
+[clangdestine]: https://gitlab.com/lillanes/vim-clangdestine
 [commentary]: https://github.com/tpope/vim-commentary
 [sleuth]: https://github.com/tpope/vim-sleuth
 [vimwiki]: https://github.com/vimwiki/vimwiki
@@ -57,7 +59,7 @@ I use the following plugins (which are kept here as git submodules):
 ### Configuration
 
 Depends on the `VIMINIT` environment variable, which should to be set to
-`":source $XDG_CONFIG_HOME/vim/vimrc"`.
+`":source $XDG_CONFIG_HOME/vim/vimrc"`. Currently set in `profile`.
 
 ## Zsh
 
@@ -80,6 +82,5 @@ I also use a couple of plugins (to imitate the best parts of the [fish shell]):
 ### Configuration
 
 Requires that the environment variable `ZDOTDIR` be set to
-`"$XDG_CONFIG_HOME/zsh"`. In addition, the `$XDG_CACHE_HOME/zsh` directory needs
-to exist.
+`"$XDG_CONFIG_HOME/zsh"`. This is currently done in `profile`.
 
