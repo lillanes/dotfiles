@@ -10,6 +10,38 @@ to work well.
 
 [XDG Base Directory Specification]: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 
+## Usage
+
+The `setup` script copies this repository's directory structure and creates
+symbolic links for the config files in `$XDG_CONFIG_HOME`. Loose files (in the
+root of the repository) are treated differently and are linked to from `$HOME`,
+but with a leading period (i.e., as hidden files).
+
+To set up everything:
+```
+./setup --all
+```
+
+To set up a single thing:
+```
+./setup thing
+```
+
+The `setup` script can also take a `--noconfirm` flag to do everything without
+asking for confirmation
+
+## profile
+
+Defines and creates the [XDG Base Directory Specification] paths. Defines
+several environment variables that force some applications to respect the XDG
+spec. Mostly based on the [relevant ArchWiki page].
+
+[relevant ArchWiki page]: https://wiki.archlinux.org/index.php/XDG_Base_Directory
+
+In addition, it sources `$XDG_CONFIG_HOME/profile`, if it exists. This file is
+supposed to hold local system- or machine-specific configs (and is not kept in
+this repository).
+
 ## Git
 
 Nothing special. Just setup name and email, and aliases I'm used to.
