@@ -1,7 +1,10 @@
 ### explicit definition of default XDG spec paths ###
-[ -z "$XDG_CONFIG_HOME" ] && export XDG_CONFIG_HOME="$HOME/.config"
-[ -z "$XDG_CACHE_HOME" ] && export XDG_CACHE_HOME="$HOME/.cache"
-[ -z "$XDG_DATA_HOME" ] && export XDG_DATA_HOME="$HOME/.local/share"
+[ -z "$XDG_CONFIG_HOME" ] && XDG_CONFIG_HOME="$HOME/.config"
+[ -z "$XDG_CACHE_HOME" ] && XDG_CACHE_HOME="$HOME/.cache"
+[ -z "$XDG_DATA_HOME" ] && XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CONFIG_HOME
+export XDG_CACHE_HOME
+export XDG_DATA_HOME
 
 
 ### add user space install paths ###
