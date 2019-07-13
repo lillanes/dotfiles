@@ -7,22 +7,8 @@ if [[ $TERM != "linux" ]] && [ -z "$TMUX" ] && type tmux > /dev/null; then
     exec tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"
 fi
 
-# Put the terminal in 'application mode' when using zle. This enables using
-# terminfo correctly.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
-    function zle-line-init() {
-        emulate -L zsh
-        printf "%s" ${terminfo[smkx]}
-    }
-    function zle-line-finish() {
-        emulate -L zsh
-        printf "%s" ${terminfo[rmkx]}
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
-fi
-
 source $ZDOTDIR/vi.zsh
+source $ZDOTDIR/keys.zsh
 source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/colors.zsh
 source $ZDOTDIR/completion.zsh
