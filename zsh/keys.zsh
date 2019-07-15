@@ -15,3 +15,6 @@ bindkey "${terminfo[kdch1]}" delete-char
 # C-left and C-right
 bindkey "${terminfo[kLFT5]}" backward-word
 bindkey "${terminfo[kRIT5]}" forward-word
+
+bindkey -s "${terminfo[kpp]}" "\a"
+bindkey -s "${terminfo[knp]}" "\a"
