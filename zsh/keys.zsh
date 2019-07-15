@@ -1,20 +1,22 @@
 # Put the terminal in 'application mode' when using zle. This enables using
 # terminfo correctly.
-function zle-line-init() { echoti smkx }
-function zle-line-finish() { echoti rmkx }
-zle -N zle-line-init
-zle -N zle-line-finish
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+    function zle-line-init() { echoti smkx }
+    function zle-line-finish() { echoti rmkx }
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
 
 # home and end keys
-bindkey "${terminfo[khome]}" beginning-of-line
-bindkey "${terminfo[kend]}" end-of-line
+(( ${+terminfo[khome]} )) && bindkey "${terminfo[khome]}" beginning-of-line
+(( ${+terminfo[khome]} )) && bindkey "${terminfo[kend]}" end-of-line
 
 # delete
-bindkey "${terminfo[kdch1]}" delete-char
+(( ${+terminfo[kdch1]} )) && bindkey "${terminfo[kdch1]}" delete-char
 
 # C-left and C-right
-bindkey "${terminfo[kLFT5]}" backward-word
-bindkey "${terminfo[kRIT5]}" forward-word
+(( ${+terminfo[kLFT5]} )) && bindkey "${terminfo[kLFT5]}" backward-word
+(( ${+terminfo[kRIT5]} )) && bindkey "${terminfo[kRIT5]}" forward-word
 
-bindkey -s "${terminfo[kpp]}" "\a"
-bindkey -s "${terminfo[knp]}" "\a"
+(( ${+terminfo[kpp]} )) && bindkey -s "${terminfo[kpp]}" "\a"
+(( ${+terminfo[knp]} )) && bindkey -s "${terminfo[knp]}" "\a"
