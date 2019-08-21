@@ -164,7 +164,7 @@ set hidden
 set showcmd
 
 """ Disable "Type qa! and press <Enter> to exit" message
-noremap <C-c> <silent> <C-c>
+nnoremap <C-c> <silent> <C-c>
 
 """ Enable mouse if possible
 if has('mouse')
