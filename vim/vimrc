@@ -208,6 +208,9 @@ noremap <leader>- <c-x>
 " remove trailing whitespace:
 noremap <silent> <leader>W :%s/\s\+$//e<CR>
 
+""" Preview markdown files with grip:
+nnoremap <silent> <leader>m :terminal ++hidden ++close grip -b % 0<CR>
+
 """ YouCompleteMe setup
 let g:ycm_server_python_interpreter='python2'
 let g:ycm_always_populate_location_list=1
