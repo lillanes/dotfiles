@@ -180,6 +180,9 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
+""" Jump back
+noremap <leader>G <C-o>
+
 """ Shortcuts for closing, quitting, saving
 noremap <leader>d :bd<CR>
 noremap <leader>q :q<CR>
