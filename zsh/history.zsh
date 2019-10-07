@@ -29,3 +29,7 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
 bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+
+# vim-like up/down also filters history:
+bindkey -a 'k' up-line-or-beginning-search
+bindkey -a 'j' down-line-or-beginning-search
