@@ -80,7 +80,7 @@ I use the following plugins (which are kept here as git submodules):
 [gruvbox]: https://github.com/morhetz/gruvbox
 [altr]: https://github.com/kana/vim-altr
 [buftabline]: https://github.com/ap/vim-buftabline
-[clangdestine]: https://gitlab.com/lillanes/vim-clangdestine
+[clangdestine]: https://github.com/lillanes/vim-clangdestine
 [commentary]: https://github.com/tpope/vim-commentary
 [sleuth]: https://github.com/tpope/vim-sleuth
 [vimwiki]: https://github.com/vimwiki/vimwiki
