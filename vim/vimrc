@@ -105,9 +105,21 @@ else
     colorscheme pablo
 endif
 
-""" Set standard text width, and highlight first out-of-bounds column
-set textwidth=80
-set colorcolumn=81
+""" Highlight first out-of-bounds column if textwidth is set or some arbitrary
+""" standards otherwise
+function! s:SetColorColumn()
+    if &textwidth == 0
+        setlocal colorcolumn=81,101,121
+    else
+        setlocal colorcolumn=+1
+    endif
+endfunction
+
+augroup colorcolumn
+    autocmd!
+    autocmd OptionSet textwidth call s:SetColorColumn()
+    autocmd BufEnter * call s:SetColorColumn()
+augroup end
 
 """ Cursor shapes for terminal
 if exists('$TMUX')
