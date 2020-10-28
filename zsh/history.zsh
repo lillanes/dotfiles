@@ -1,6 +1,5 @@
-# Allow multiple instances to share single history
-setopt APPEND_HISTORY
-# Store history immediately (as opposed to on exit)
+# Allow multiple instances to share single history and store history
+# immediately (as opposed to on exit)
 setopt INC_APPEND_HISTORY
 # Avoid duplicates
 setopt HIST_IGNORE_DUPS
