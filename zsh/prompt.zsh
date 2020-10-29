@@ -33,3 +33,15 @@ function replace-rprompt-with-timestamp {
     zle .accept-line
 }
 zle -N accept-line replace-rprompt-with-timestamp
+
+## Replace right side prompt with red timestamp after aborting command
+# This has some issues: receiving INT while on a minibuffer, for example, will
+# exit the minibuffer and set a red timestamp instead of the current mode
+function replace-rprompt-with-red-timestamp {
+    OLD_PROMPT="$RPROMPT"
+    RPROMPT="%F{red}[%D{%Y-%m-%f %H:%M:%S}]%f"
+    zle reset-prompt
+    RPROMPT="$OLD_PROMPT"
+    zle send-break
+}
+trap 'replace-rprompt-with-red-timestamp' INT
