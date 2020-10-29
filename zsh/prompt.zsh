@@ -25,12 +25,11 @@ function mode-prompt-toggle {
 zle -N zle-keymap-select mode-prompt-toggle
 
 ## Replace right side prompt with timestamp after accepting command
-function replace-rprompt-with-timestamp() {
+function replace-rprompt-with-timestamp {
     OLD_PROMPT="$RPROMPT"
     RPROMPT="%F{white}[%D{%Y-%m-%f %H:%M:%S}]%f"
     zle reset-prompt
     RPROMPT="$OLD_PROMPT"
-    zle accept-line
+    zle .accept-line
 }
-zle -N replace-rprompt-with-timestamp
-bindkey "^M" replace-rprompt-with-timestamp
+zle -N accept-line replace-rprompt-with-timestamp
