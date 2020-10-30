@@ -27,7 +27,10 @@ zle -N zle-keymap-select mode-prompt-toggle
 ## Display timestamp on right side before running a command
 # (not actually part of the prompt, but feel prompt-like)
 preexec() {
-    printf "$fg[white]%*s%s$fg[default]" "$(tput cols)" "$(date +'[%F %H:%M:%S] ')"
+    tput cuu 1             # move up
+    tput cuf $(tput cols)  # move to end of line
+    tput cub 21            # move back so timestamp fits
+    printf "$fg[white]%s$fg[default]\n" "$(date +'[%F %H:%M:%S]')"
 }
 
 # Hide right prompt for past lines
