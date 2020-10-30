@@ -24,24 +24,11 @@ function mode-prompt-toggle {
 }
 zle -N zle-keymap-select mode-prompt-toggle
 
-## Replace right side prompt with timestamp after accepting command
-function replace-rprompt-with-timestamp {
-    OLD_PROMPT="$RPROMPT"
-    RPROMPT="%F{white}[%D{%Y-%m-%f %H:%M:%S}]%f"
-    zle reset-prompt
-    RPROMPT="$OLD_PROMPT"
-    zle .accept-line
+## Display timestamp on right side before running a command
+# (not actually part of the prompt, but feel prompt-like)
+preexec() {
+    printf "$fg[white]%*s%s$fg[default]" "$(tput cols)" "$(date +'[%F %H:%M:%S] ')"
 }
-zle -N accept-line replace-rprompt-with-timestamp
 
-## Replace right side prompt with red timestamp after aborting command
-# This has some issues: receiving INT while on a minibuffer, for example, will
-# exit the minibuffer and set a red timestamp instead of the current mode
-function replace-rprompt-with-red-timestamp {
-    OLD_PROMPT="$RPROMPT"
-    RPROMPT="%F{red}[%D{%Y-%m-%f %H:%M:%S}]%f"
-    zle reset-prompt
-    RPROMPT="$OLD_PROMPT"
-    zle send-break
-}
-trap 'replace-rprompt-with-red-timestamp' INT
+# Hide right prompt for past lines
+setopt transient_rprompt
