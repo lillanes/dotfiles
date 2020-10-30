@@ -30,6 +30,7 @@ preexec() {
     tput cuu 1             # move up
     tput cuf $(tput cols)  # move to end of line
     tput cub 21            # move back so timestamp fits
+    tput ich 21            # make space to avoid overwriting important data
     printf "$fg[white]%s$fg[default]\n" "$(date +'[%F %H:%M:%S]')"
 }
 
