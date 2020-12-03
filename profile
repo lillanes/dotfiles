@@ -21,9 +21,11 @@ mkdir -p "$XDG_DATA_HOME"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 mkdir -p "$GNUPGHOME"
 
-# less: history files
-export LESSHISTFILE="$XDG_CACHE_HOME/less/histfile"
+# less: config and history files
 mkdir -p "$XDG_CACHE_HOME/less"
+mkdir -p "$XDG_CONFIG_HOME/less"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/histfile"
+export LESSKEY="$XDG_CONFIG_HOME/less/lesskey"
 
 # ncurses/terminfo: compiled terminfo files
 export TERMINFO_DIRS="$XDG_DATA_HOME/terminfo:/usr/local/share/terminfo:/etc/terminfo:/lib/terminfo:/usr/share/terminfo"
