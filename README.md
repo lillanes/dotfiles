@@ -42,9 +42,20 @@ In addition, it sources `$XDG_CONFIG_HOME/profile`, if it exists. This file is
 supposed to hold local system- or machine-specific configs (and is not kept in
 this repository).
 
+## Dunst
+
+Very close to the example config provided by dunst. Some cosmetic changes,
+correct paths to third party software, and makes notifications appear in the
+monitor where the mouse pointer is.
+
+## Less
+
+Use color codes (e.g., for git-diff) and mouse wheel.
+
 ## Git
 
-Nothing special. Just setup name and email, and aliases I'm used to.
+Nothing special. Just setup name and email, editor, mandatory configs, and
+aliases I'm used to.
 
 ## Python
 
@@ -55,6 +66,11 @@ cache location.
 
 Depends on the `PYTHONSTARTUP` environment variable, which needs to be set to
 `"$XDG_CONFIG_HOME/python/startup.py"`. This is currently set in `profile`.
+
+## Tmux
+
+Changes command prefix to avoid conflicts with vim, and sets up cosmetic and
+simple usage preferences.
 
 ## Vim
 
@@ -72,7 +88,6 @@ I use the following plugins (which are kept here as git submodules):
 - [commentary]: minimal tool for commenting out lines or blocks of code
 - [sleuth]: guesses the current file's indentation settings (tabs vs. spaces,
   etc.)
-- [vimwiki]: maintain a personal wiki for keeping notes
 - [YCM-Generator]: automatically generates project configuration files for
   YouCompleteMe
 - [YouCompleteMe]: code-completion engine
@@ -83,7 +98,6 @@ I use the following plugins (which are kept here as git submodules):
 [clangdestine]: https://github.com/lillanes/vim-clangdestine
 [commentary]: https://github.com/tpope/vim-commentary
 [sleuth]: https://github.com/tpope/vim-sleuth
-[vimwiki]: https://github.com/vimwiki/vimwiki
 [YCM-Generator]: https://github.com/rdnetto/YCM-Generator
 [YouCompleteMe]: https://github.com/Valloric/YouCompleteMe
 [a.vim]: https://www.vim.org/scripts/script.php?script_id=31
@@ -96,7 +110,9 @@ Depends on the `VIMINIT` environment variable, which should to be set to
 ## Zsh
 
 Vi-like bindings and shortcuts. Typical aliases. Useful completion. Command
-corrections. Clean, simple prompt.
+corrections. Clean, simple prompt with current directory, mode indicator, error
+indication, and timestamp printed after command is entered. Tmux is used
+automatically when available.
 
 Cached files and configuration files (mostly) follow the XDG spec (`.zshrc` and
 others still need to have the dot in the name, so I work around that with
