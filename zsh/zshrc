@@ -13,6 +13,7 @@ source $ZDOTDIR/aliases.zsh
 source $ZDOTDIR/colors.zsh
 source $ZDOTDIR/completion.zsh
 source $ZDOTDIR/history.zsh
+source $ZDOTDIR/nnn.zsh
 source $ZDOTDIR/options.zsh
 source $ZDOTDIR/prompt.zsh
 
